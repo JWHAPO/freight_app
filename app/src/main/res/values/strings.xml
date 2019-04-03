@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">freight</string>
+    <string name="signin_btn">Sign in</string>
+    <string name="signup">Sign up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
 </resources>

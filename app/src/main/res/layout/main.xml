@@ -18,6 +18,9 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:inputType="textEmailAddress"
+                android:hint="@string/email"
+                android:textColorHint="#EAEAEA"
+                android:textColor="#FFFFFF"
                 app:layout_constraintVertical_chainStyle="packed"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/main_password_et"
@@ -32,9 +35,35 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:singleLine="true"
+                android:hint="@string/password"
+                android:textColorHint="#EAEAEA"
+                android:textColor="#FFFFFF"
                 app:layout_constraintTop_toBottomOf="@+id/main_email_et"
+                app:layout_constraintBottom_toTopOf="@+id/main_signin_btn"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <Button
+                android:id="@+id/main_signin_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/signin_btn"
+                app:layout_constraintTop_toBottomOf="@+id/main_password_et"
+                app:layout_constraintBottom_toTopOf="@+id/main_signup_tv"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <TextView
+                android:id="@+id/main_signup_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/signup"
+                android:textColor="#ffffff"
+                app:layout_constraintTop_toBottomOf="@+id/main_signin_btn"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintLeft_toLeftOf="parent"/>
 
 

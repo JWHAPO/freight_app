@@ -3,13 +3,21 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+                name="userViewModel"
+                type="com.bomi.hapo.freight_app.viewmodel.UserViewModel"
+                />
+    </data>
+
 
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:padding="10dp"
+            android:padding="@dimen/layout_padding_size"
             android:background="@drawable/main">
 
         <EditText
@@ -21,13 +29,16 @@
                 android:hint="@string/email"
                 android:textColorHint="#EAEAEA"
                 android:textColor="#FFFFFF"
+                android:text="@{userViewModel.user.email}"
+                android:afterTextChanged="@{(editable) -> userViewModel.afterEmailTextChanged(editable)}"
                 app:layout_constraintVertical_chainStyle="packed"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/main_password_et"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintVertical_bias="0.6"
-                android:layout_marginBottom="10dp"/>
+                app:layout_constraintVertical_bias="0.7"
+                android:layout_marginBottom="@dimen/input_field_margin_size"
+                />
 
         <EditText
                 android:id="@+id/main_password_et"
@@ -38,10 +49,13 @@
                 android:hint="@string/password"
                 android:textColorHint="#EAEAEA"
                 android:textColor="#FFFFFF"
+                android:text="@{userViewModel.user.password}"
+                android:afterTextChanged="@{(editable) -> userViewModel.afterPasswordTextChanged(editable)}"
                 app:layout_constraintTop_toBottomOf="@+id/main_email_et"
                 app:layout_constraintBottom_toTopOf="@+id/main_signin_btn"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"/>
+                app:layout_constraintLeft_toLeftOf="parent"
+                />
 
         <Button
                 android:id="@+id/main_signin_btn"
@@ -52,7 +66,9 @@
                 app:layout_constraintBottom_toTopOf="@+id/main_signup_tv"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintLeft_toLeftOf="parent"/>
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:onClick="@{()-> userViewModel.onSignInBtnClick()}"
+                />
 
         <TextView
                 android:id="@+id/main_signup_tv"
@@ -64,7 +80,34 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintLeft_toLeftOf="parent"/>
+                app:layout_constraintLeft_toLeftOf="parent"
+                />
+
+        <ImageView
+                android:id="@+id/main_email_valid_iv"
+                android:layout_width="@dimen/valid_icon_width"
+                android:layout_height="@dimen/valid_icon_width"
+                android:src="@drawable/uncheck"
+                app:layout_constraintTop_toTopOf="@+id/main_email_et"
+                app:layout_constraintRight_toRightOf="@+id/main_email_et"
+                app:layout_constraintBottom_toBottomOf="@+id/main_email_et"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintHorizontal_bias="0.95"
+                app:email_valid="@{userViewModel.emailValid}"
+                />
+
+        <ImageView
+                android:id="@+id/main_password_valid_iv"
+                android:layout_width="@dimen/valid_icon_width"
+                android:layout_height="@dimen/valid_icon_width"
+                android:src="@drawable/uncheck"
+                app:layout_constraintTop_toTopOf="@+id/main_password_et"
+                app:layout_constraintRight_toRightOf="@+id/main_password_et"
+                app:layout_constraintBottom_toBottomOf="@+id/main_password_et"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintHorizontal_bias="0.95"
+                app:password_valid="@{userViewModel.passwordValid}"
+                />
 
 
     </android.support.constraint.ConstraintLayout>

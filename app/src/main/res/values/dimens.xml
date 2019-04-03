@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="valid_icon_width">26dp</dimen>
+    <dimen name="valid_icon_height">26dp</dimen>
+    <dimen name="layout_padding_size">10dp</dimen>
+    <dimen name="input_field_margin_size">10dp</dimen>
+</resources>

@@ -44,6 +44,9 @@ class UserViewModel(val application: Application) : BaseObservable() {
     fun onSignInBtnClick() {
         if (emailValid && passwordValid) {
             Toast.makeText(application, "SUCCESS VALID", Toast.LENGTH_LONG).show()
+        }else{
+
+            Toast.makeText(application, "INVALID", Toast.LENGTH_LONG).show()
         }
     }
 }

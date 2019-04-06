@@ -4,11 +4,11 @@ import android.app.Application
 import android.databinding.BaseObservable
 import android.databinding.Bindable
 import android.databinding.BindingAdapter
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.bomi.hapo.freight_app.BR
 import com.bomi.hapo.freight_app.R
+import com.bomi.hapo.freight_app.common.App
 import com.bomi.hapo.freight_app.model.User
 import kotlinx.android.synthetic.main.main_layout.view.*
 
@@ -29,6 +29,11 @@ class UserViewModel(val application: Application) : BaseObservable() {
     @Bindable
     var passwordValid: Boolean = false
 
+    init {
+        user.email = App.prefs.loginId
+    }
+
+
     fun afterEmailTextChanged(s: CharSequence) {
         user.email = s.toString()
         emailValid = user.isEmailValid()
@@ -44,9 +49,9 @@ class UserViewModel(val application: Application) : BaseObservable() {
     fun onSignInBtnClick() {
         if (emailValid && passwordValid) {
             Toast.makeText(application, "SUCCESS VALID", Toast.LENGTH_LONG).show()
-        }else{
-
-            Toast.makeText(application, "INeVALID", Toast.LENGTH_LONG).show()
+            App.prefs.loginId = user.email
+        } else {
+            Toast.makeText(application, "INVALID", Toast.LENGTH_LONG).show()
         }
     }
 }

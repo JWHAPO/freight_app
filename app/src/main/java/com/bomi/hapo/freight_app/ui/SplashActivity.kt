@@ -10,12 +10,12 @@ import android.support.v7.app.AppCompatActivity
  * -19. 4. 2 오후 10:00
  */
 
-class SplashActivity : AppCompatActivity(){
+class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var intent:Intent = Intent(this, MainActivity::class.java)
+        var intent: Intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
 
         finish()

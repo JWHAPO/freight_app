@@ -51,7 +51,7 @@ class UserViewModel(val application: Application) : BaseObservable() {
             Toast.makeText(application, "SUCCESS VALID", Toast.LENGTH_LONG).show()
             App.prefs.loginId = user.email
         } else {
-            Toast.makeText(application, "INVALID", Toast.LENGTH_LONG).show()
+            Toast.makeText(application, application.resources.getString(R.string.check_account), Toast.LENGTH_LONG).show()
         }
     }
 }

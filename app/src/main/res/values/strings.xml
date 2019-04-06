@@ -4,4 +4,5 @@
     <string name="signup">Sign up</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="check_account">Please check your account.</string>
 </resources>

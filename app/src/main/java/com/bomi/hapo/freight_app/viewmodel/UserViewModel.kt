@@ -46,7 +46,7 @@ class UserViewModel(val application: Application) : BaseObservable() {
             Toast.makeText(application, "SUCCESS VALID", Toast.LENGTH_LONG).show()
         }else{
 
-            Toast.makeText(application, "INVALID", Toast.LENGTH_LONG).show()
+            Toast.makeText(application, "INeVALID", Toast.LENGTH_LONG).show()
         }
     }
 }

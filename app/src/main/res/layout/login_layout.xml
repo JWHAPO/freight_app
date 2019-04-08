@@ -21,7 +21,7 @@
             android:background="@drawable/main">
 
         <EditText
-                android:id="@+id/main_email_et"
+                android:id="@+id/login_email_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
@@ -33,7 +33,7 @@
                 android:afterTextChanged="@{(editable) -> userViewModel.afterEmailTextChanged(editable)}"
                 app:layout_constraintVertical_chainStyle="packed"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/main_password_et"
+                app:layout_constraintBottom_toTopOf="@+id/login_password_et"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintVertical_bias="0.7"
@@ -41,7 +41,7 @@
                 />
 
         <EditText
-                android:id="@+id/main_password_et"
+                android:id="@+id/login_password_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -51,19 +51,19 @@
                 android:textColor="#FFFFFF"
                 android:text="@{userViewModel.user.password}"
                 android:afterTextChanged="@{(editable) -> userViewModel.afterPasswordTextChanged(editable)}"
-                app:layout_constraintTop_toBottomOf="@+id/main_email_et"
-                app:layout_constraintBottom_toTopOf="@+id/main_signin_btn"
+                app:layout_constraintTop_toBottomOf="@+id/login_email_et"
+                app:layout_constraintBottom_toTopOf="@+id/login_signin_btn"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 />
 
         <Button
-                android:id="@+id/main_signin_btn"
+                android:id="@+id/login_signin_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/signin_btn"
-                app:layout_constraintTop_toBottomOf="@+id/main_password_et"
-                app:layout_constraintBottom_toTopOf="@+id/main_signup_tv"
+                app:layout_constraintTop_toBottomOf="@+id/login_password_et"
+                app:layout_constraintBottom_toTopOf="@+id/login_signup_tv"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -71,12 +71,12 @@
                 />
 
         <TextView
-                android:id="@+id/main_signup_tv"
+                android:id="@+id/login_signup_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/signup"
                 android:textColor="#ffffff"
-                app:layout_constraintTop_toBottomOf="@+id/main_signin_btn"
+                app:layout_constraintTop_toBottomOf="@+id/login_signin_btn"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -84,26 +84,26 @@
                 />
 
         <ImageView
-                android:id="@+id/main_email_valid_iv"
+                android:id="@+id/login_email_valid_iv"
                 android:layout_width="@dimen/valid_icon_width"
                 android:layout_height="@dimen/valid_icon_width"
                 android:src="@drawable/uncheck"
-                app:layout_constraintTop_toTopOf="@+id/main_email_et"
-                app:layout_constraintRight_toRightOf="@+id/main_email_et"
-                app:layout_constraintBottom_toBottomOf="@+id/main_email_et"
+                app:layout_constraintTop_toTopOf="@+id/login_email_et"
+                app:layout_constraintRight_toRightOf="@+id/login_email_et"
+                app:layout_constraintBottom_toBottomOf="@+id/login_email_et"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintHorizontal_bias="0.95"
                 app:email_valid="@{userViewModel.emailValid}"
                 />
 
         <ImageView
-                android:id="@+id/main_password_valid_iv"
+                android:id="@+id/login_password_valid_iv"
                 android:layout_width="@dimen/valid_icon_width"
                 android:layout_height="@dimen/valid_icon_width"
                 android:src="@drawable/uncheck"
-                app:layout_constraintTop_toTopOf="@+id/main_password_et"
-                app:layout_constraintRight_toRightOf="@+id/main_password_et"
-                app:layout_constraintBottom_toBottomOf="@+id/main_password_et"
+                app:layout_constraintTop_toTopOf="@+id/login_password_et"
+                app:layout_constraintRight_toRightOf="@+id/login_password_et"
+                app:layout_constraintBottom_toBottomOf="@+id/login_password_et"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintHorizontal_bias="0.95"
                 app:password_valid="@{userViewModel.passwordValid}"

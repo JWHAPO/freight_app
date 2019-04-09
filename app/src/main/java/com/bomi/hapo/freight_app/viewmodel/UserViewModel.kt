@@ -86,7 +86,7 @@ class UserViewModel(private val application: Application) : BaseObservable() {
 
     private fun failLogin(error: Throwable) {
         println("error: $error")
-        Toast.makeText(application.applicationContext, "${error}!", Toast.LENGTH_LONG).show()
+        Toast.makeText(application.applicationContext, "$error !", Toast.LENGTH_LONG).show()
     }
 
     private fun moveMain(token: JsonElement) {

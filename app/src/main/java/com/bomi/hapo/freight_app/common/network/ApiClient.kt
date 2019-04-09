@@ -1,6 +1,7 @@
 package com.bomi.hapo.freight_app.common.network
 
 import android.content.Context
+import com.bomi.hapo.freight_app.common.App
 import com.bomi.hapo.freight_app.common.BASE_URL
 import com.bomi.hapo.freight_app.common.REQUEST_TIMEOUT
 import okhttp3.Interceptor
@@ -48,10 +49,8 @@ object ApiClient {
                 .newBuilder()
                 .addHeader("Accept", "application/json")
                 .addHeader("Content-Type", "application/json")
+                .addHeader("Authorization", "Bearer ${App.prefs.API_TOKEN}")
                 .build()
-//            if(!TextUtils.isEmpty(PrefUtils().getApiKey(context))){
-//                request?.addHeader("Authorization", PrefUtils().getApiKey(context))
-//            }
             chain.proceed(request)
         })
 

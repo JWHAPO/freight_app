@@ -10,13 +10,13 @@ import android.content.SharedPreferences
  */
 
 class Prefs(context: Context) {
-    var PREFS_FILENAME = "com.bomi.hapo.freight_app.prefs"
-    var prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
+    val PREFS_FILENAME = "com.bomi.hapo.freight_app.prefs"
+    private var prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
 
     //저장 객체 KEY
-    var LOGIN_ID = "LOGIN_ID"
-    var API_TOKEN = "API_TOKEN"
-    var API_REFRESH_TOKEN = "API_REFRESH_TOKEN"
+    val LOGIN_ID = "LOGIN_ID"
+    val API_TOKEN = "API_TOKEN"
+    val API_REFRESH_TOKEN = "API_REFRESH_TOKEN"
 
     //저장 객체
     var loginId: String

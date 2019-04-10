@@ -49,7 +49,7 @@ object ApiClient {
                 .newBuilder()
                 .addHeader("Accept", "application/json")
                 .addHeader("Content-Type", "application/json")
-                .addHeader("Authorization", "Bearer ${App.prefs.API_TOKEN}")
+//                .addHeader("Authorization", "Bearer ${App.prefs.API_TOKEN}")
                 .build()
             chain.proceed(request)
         })

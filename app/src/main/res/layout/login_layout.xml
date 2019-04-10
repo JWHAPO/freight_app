@@ -8,7 +8,7 @@
         <variable
                 name="userViewModel"
                 type="com.bomi.hapo.freight_app.viewmodel.UserViewModel"
-                />
+        />
     </data>
 
 
@@ -38,7 +38,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintVertical_bias="0.7"
                 android:layout_marginBottom="@dimen/input_field_margin_size"
-                />
+        />
 
         <EditText
                 android:id="@+id/login_password_et"
@@ -55,7 +55,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/login_signin_btn"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                />
+        />
 
         <Button
                 android:id="@+id/login_signin_btn"
@@ -68,7 +68,7 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:onClick="@{()-> userViewModel.onSignInBtnClick()}"
-                />
+        />
 
         <TextView
                 android:id="@+id/login_signup_tv"
@@ -81,7 +81,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintLeft_toLeftOf="parent"
-                />
+        />
 
         <ImageView
                 android:id="@+id/login_email_valid_iv"
@@ -94,7 +94,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintHorizontal_bias="0.95"
                 app:email_valid="@{userViewModel.emailValid}"
-                />
+        />
 
         <ImageView
                 android:id="@+id/login_password_valid_iv"
@@ -107,7 +107,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintHorizontal_bias="0.95"
                 app:password_valid="@{userViewModel.passwordValid}"
-                />
+        />
 
 
     </android.support.constraint.ConstraintLayout>

@@ -94,7 +94,7 @@ class UserViewModel(private val application: Application) : BaseObservable() {
         goMainActivity()
     }
 
-    fun goMainActivity(){
+    private fun goMainActivity(){
         val intent = Intent(application as Context,MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         application.startActivity(intent)

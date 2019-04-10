@@ -5,4 +5,7 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="check_account">Please check your account.</string>
+    <string name="current_car_count">Current Cars</string>
+    <string name="move_it">Please Move it</string>
+    <string name="i_will_move_it">I\'ll move it</string>
 </resources>

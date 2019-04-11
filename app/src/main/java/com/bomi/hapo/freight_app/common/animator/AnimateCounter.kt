@@ -1,35 +1,51 @@
 package com.bomi.hapo.freight_app.common.animator
 
 import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.view.animation.Interpolator
 import android.widget.TextView
-import java.time.Duration
+import kotlin.math.abs
 
 /**
  *
  * Created by JWHAPO
  * -19. 4. 11 오후 10:58
  */
-class AnimateCounter {
-    lateinit var mView: TextView
-    var mDuration: Long = 0L
-    var mStartValue: Float = 0F
-    var mEndValue: Float = 0F
-    var mPrecision: Int = 0
-    lateinit var mInterpolator: Interpolator
+class AnimateCounter(builder: Builder) {
+    var mView: TextView
+    var mDuration: Long
+    var mStartValue: Float
+    var mEndValue: Float
+    var mPrecision: Int
+    var mInterpolator: Interpolator
     lateinit var mValueAnmator: ValueAnimator
     lateinit var mListener: AnimateCounterListener
+
+    init {
+        mView = builder.mView
+        mDuration = builder.mDuration
+        mStartValue = builder.mStartValue
+        mEndValue = builder.mEndValue
+        mPrecision = builder.mPrecision
+        mInterpolator = builder.mInterpolator
+    }
 
     fun execute() {
         mValueAnmator = ValueAnimator.ofFloat(mStartValue, mEndValue)
         mValueAnmator.duration = mDuration
         mValueAnmator.interpolator = mInterpolator
         mValueAnmator.addUpdateListener { animation ->
-            mView.text = String.format("%. " + mPrecision + "f", animation.animatedValue as Float)
+            mView.text = String.format("%." + mPrecision + "f", animation.animatedValue as Float)
         }
         mValueAnmator.addListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator?) {
+            }
+
+            override fun onAnimationRepeat(animation: Animator?) {
+            }
+
+            override fun onAnimationCancel(animation: Animator?) {
+            }
             override fun onAnimationEnd(animation: Animator?) {
                 mListener?.let { it.onAnimateCounterEnd() }
             }
@@ -37,14 +53,64 @@ class AnimateCounter {
         mValueAnmator.start()
     }
 
-    class Builder {
+    class Builder(view: TextView) {
         var mDuration: Long = 2000L
         var mStartValue: Float = 0F
         var mEndValue: Float = 10F
         var mPrecision: Int = 0
         lateinit var mInterpolator: Interpolator
-        lateinit var mView: TextView
+        var mView: TextView = view
+
+        fun setCount(start: Int, end: Int): Builder {
+            if (start == end) {
+                throw IllegalArgumentException("Start and End must be different")
+            }
+            mStartValue = start as Float
+            mEndValue = end as Float
+            mPrecision = 0
+            return this
+        }
+
+        fun setCount(start: Float, end: Float, precision: Int): Builder {
+            if (abs(start - end) < 0.001) {
+                throw IllegalArgumentException("Start and End must be different")
+            }
+            if (precision < 0) {
+                throw IllegalArgumentException("Precision can't be negative")
+            }
+            mStartValue = start
+            mEndValue = end
+            mPrecision = precision
+            return this
+        }
+
+        fun setDuration(duration: Long): Builder {
+            if (duration <= 0) {
+                throw IllegalArgumentException("Duration can't be negative")
+            }
+            mDuration = duration
+            return this
+        }
+
+        fun setInterpolator(interpolator: Interpolator): Builder {
+            mInterpolator = interpolator
+            return this
+        }
+
+        fun build(): AnimateCounter {
+            return AnimateCounter(this)
+        }
     }
+
+
+    fun stop() {
+        if (mValueAnmator.isRunning) mValueAnmator.cancel()
+    }
+
+    fun setAnimateCounterListener(listener: AnimateCounterListener) {
+        mListener = listener
+    }
+
 
     interface AnimateCounterListener {
         fun onAnimateCounterEnd()

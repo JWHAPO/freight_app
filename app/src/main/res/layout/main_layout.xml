@@ -43,6 +43,7 @@
                   app:layout_constraintBottom_toTopOf="@+id/main_move_it_btn"
                   app:layout_constraintLeft_toLeftOf="parent"
                   app:layout_constraintRight_toRightOf="parent"
+                  app:order_car_count="@{mainViewModel.orderCarCount}"
         />
         <Button android:id="@+id/main_move_it_btn"
                 android:layout_width="match_parent"

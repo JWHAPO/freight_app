@@ -7,8 +7,10 @@ import android.databinding.BindingAdapter
 import android.view.View
 import android.widget.Toast
 import com.bomi.hapo.freight_app.BR
+import com.bomi.hapo.freight_app.common.animator.AnimateCounter
 import com.bomi.hapo.freight_app.common.network.ApiService
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.android.synthetic.main.main_layout.view.*
 
 /**
  *
@@ -40,5 +42,11 @@ class MainViewModel(private val application: Application) : BaseObservable() {
 
 @BindingAdapter("order_car_count")
 fun animateOrderCarCount(view: View, carCount: Int) {
-    Toast.makeText(view.context, "car count:$carCount!!!", Toast.LENGTH_LONG).show()
+    var start: Int = 0
+    var end = carCount
+
+    var animateCounter: AnimateCounter =
+        AnimateCounter.Builder(view.main_current_car_count_tv).setCount(start, end).setDuration(2000).build()
+    animateCounter.execute()
+
 }

@@ -28,6 +28,7 @@ class AnimateCounter(builder: Builder) {
         mEndValue = builder.mEndValue
         mPrecision = builder.mPrecision
         mInterpolator = builder.mInterpolator
+        mListener = builder.mListener
     }
 
     fun execute() {
@@ -58,15 +59,16 @@ class AnimateCounter(builder: Builder) {
         var mStartValue: Float = 0F
         var mEndValue: Float = 10F
         var mPrecision: Int = 0
+        lateinit var mListener: AnimateCounterListener
         lateinit var mInterpolator: Interpolator
         var mView: TextView = view
 
-        fun setCount(start: Int, end: Int): Builder {
+        fun setCount(start: Float, end: Float): Builder {
             if (start == end) {
                 throw IllegalArgumentException("Start and End must be different")
             }
-            mStartValue = start as Float
-            mEndValue = end as Float
+            mStartValue = start
+            mEndValue = end
             mPrecision = 0
             return this
         }
@@ -97,6 +99,12 @@ class AnimateCounter(builder: Builder) {
             return this
         }
 
+        fun setAnimationCounterListener(listener: AnimateCounterListener): Builder {
+            mListener = listener
+
+            return this
+        }
+
         fun build(): AnimateCounter {
             return AnimateCounter(this)
         }
@@ -106,11 +114,6 @@ class AnimateCounter(builder: Builder) {
     fun stop() {
         if (mValueAnmator.isRunning) mValueAnmator.cancel()
     }
-
-    fun setAnimateCounterListener(listener: AnimateCounterListener) {
-        mListener = listener
-    }
-
 
     interface AnimateCounterListener {
         fun onAnimateCounterEnd()

@@ -5,6 +5,7 @@ import android.databinding.BaseObservable
 import android.databinding.Bindable
 import android.databinding.BindingAdapter
 import android.view.View
+import android.view.animation.Interpolator
 import android.widget.Toast
 import com.bomi.hapo.freight_app.BR
 import com.bomi.hapo.freight_app.common.animator.AnimateCounter
@@ -41,12 +42,20 @@ class MainViewModel(private val application: Application) : BaseObservable() {
 }
 
 @BindingAdapter("order_car_count")
-fun animateOrderCarCount(view: View, carCount: Int) {
-    var start: Int = 0
-    var end = carCount
+fun animateOrderCarCount(view: View, carCount: Float) {
+    var start: Float = 1F
+    var end: Float = carCount
 
     var animateCounter: AnimateCounter =
-        AnimateCounter.Builder(view.main_current_car_count_tv).setCount(start, end).setDuration(2000).build()
+        AnimateCounter.Builder(view.main_current_car_count_tv)
+            .setCount(start, end)
+            .setDuration(3000)
+            .setInterpolator(Interpolator { input ->  input})
+            .setAnimationCounterListener(object :AnimateCounter.AnimateCounterListener{
+                override fun onAnimateCounterEnd() {
+                }
+            })
+            .build()
     animateCounter.execute()
 
 }

@@ -35,5 +35,10 @@ interface ApiService {
     fun getUserByEmailAndPassword(@Path(value = "email", encoded = true) email: String
                                     ,@Path(value = "password", encoded = true) password: String): Observable<User>
 
+    //get Order Counting
+    @FormUrlEncoded
+    @GET("api/orders/count/status/{status}")
+    fun getOrderCountByStatus(@Path(value = "status", encoded = true) status: String ) : Observable<Int>
+
 
 }

@@ -14,8 +14,8 @@ import kotlin.math.abs
 class AnimateCounter(builder: Builder) {
     var mView: TextView
     var mDuration: Long
-    var mStartValue: Float
-    var mEndValue: Float
+    var mStartValue: Int
+    var mEndValue: Int
     var mPrecision: Int
     var mInterpolator: Interpolator
     lateinit var mValueAnmator: ValueAnimator
@@ -32,7 +32,7 @@ class AnimateCounter(builder: Builder) {
     }
 
     fun execute() {
-        mValueAnmator = ValueAnimator.ofFloat(mStartValue, mEndValue)
+        mValueAnmator = ValueAnimator.ofInt(mStartValue, mEndValue)
         mValueAnmator.duration = mDuration
         mValueAnmator.interpolator = mInterpolator
         mValueAnmator.addUpdateListener { animation ->
@@ -56,14 +56,14 @@ class AnimateCounter(builder: Builder) {
 
     class Builder(view: TextView) {
         var mDuration: Long = 2000L
-        var mStartValue: Float = 0F
-        var mEndValue: Float = 10F
+        var mStartValue: Int = 0
+        var mEndValue: Int = 0
         var mPrecision: Int = 0
         lateinit var mListener: AnimateCounterListener
         lateinit var mInterpolator: Interpolator
         var mView: TextView = view
 
-        fun setCount(start: Float, end: Float): Builder {
+        fun setCount(start: Int, end: Int): Builder {
             if (start == end) {
                 throw IllegalArgumentException("Start and End must be different")
             }
@@ -73,8 +73,8 @@ class AnimateCounter(builder: Builder) {
             return this
         }
 
-        fun setCount(start: Float, end: Float, precision: Int): Builder {
-            if (abs(start - end) < 0.001) {
+        fun setCount(start: Int, end: Int, precision: Int): Builder {
+            if (abs(start - end) < 1) {
                 throw IllegalArgumentException("Start and End must be different")
             }
             if (precision < 0) {

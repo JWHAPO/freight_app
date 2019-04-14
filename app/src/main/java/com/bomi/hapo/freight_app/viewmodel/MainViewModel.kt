@@ -5,12 +5,16 @@ import android.databinding.BaseObservable
 import android.databinding.Bindable
 import android.databinding.BindingAdapter
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.view.animation.Interpolator
 import android.widget.Toast
 import com.bomi.hapo.freight_app.BR
 import com.bomi.hapo.freight_app.common.animator.AnimateCounter
+import com.bomi.hapo.freight_app.common.network.ApiClient
 import com.bomi.hapo.freight_app.common.network.ApiService
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.main_layout.view.*
 
 /**
@@ -30,27 +34,40 @@ class MainViewModel(private val application: Application) : BaseObservable() {
         getOrderCarCount()
     }
 
-    private fun returnOrderCarCount(): Int {
-        return 10000
+    private fun getOrderCarCount() {
+
+        apiService = ApiClient.getClient(application).create(ApiService::class.java)
+
+        mCompositeDisposable.add(
+            apiService.getOrderCountByStatus("IN_PROGRESS")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::setCurrentOrderCarCount, this::failGetCount)
+        )
     }
 
-    private fun getOrderCarCount() {
-        orderCarCount = returnOrderCarCount()
+    private fun setCurrentOrderCarCount(count: Int) {
+        orderCarCount = count
         notifyPropertyChanged(BR.orderCarCount)
+    }
+
+    private fun failGetCount(error: Throwable) {
+        println("error: $error")
+        Toast.makeText(application.applicationContext, "$error !", Toast.LENGTH_LONG).show()
     }
 
 }
 
 @BindingAdapter("order_car_count")
-fun animateOrderCarCount(view: View, carCount: Float) {
-    var start: Float = 1F
-    var end: Float = carCount
+fun animateOrderCarCount(view: View, carCount: Int) {
+    var start: Int = 1
+    var end: Int = carCount
 
     var animateCounter: AnimateCounter =
         AnimateCounter.Builder(view.main_current_car_count_tv)
             .setCount(start, end)
             .setDuration(3000)
-            .setInterpolator(Interpolator { input ->  input})
+            .setInterpolator(AnimationUtils.loadInterpolator(view.context, android.R.anim.decelerate_interpolator))
             .setAnimationCounterListener(object :AnimateCounter.AnimateCounterListener{
                 override fun onAnimateCounterEnd() {
                 }

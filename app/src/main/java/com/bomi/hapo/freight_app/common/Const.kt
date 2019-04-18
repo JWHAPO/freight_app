@@ -7,5 +7,5 @@ package com.bomi.hapo.freight_app.common
  */
 
 
-const val BASE_URL = "http://221.146.216.241:8080/"
+const val BASE_URL = "http://125.129.235.65:8080/"
 const val REQUEST_TIMEOUT = 60L

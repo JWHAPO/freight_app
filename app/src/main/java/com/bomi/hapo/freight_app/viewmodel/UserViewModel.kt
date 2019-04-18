@@ -34,7 +34,7 @@ class UserViewModel(private val application: Application) : BaseObservable() {
     private var mCompositeDisposable: CompositeDisposable = CompositeDisposable()
 
     @Bindable
-    var user: User = User()
+    var user: User = User(0L,0L,"","","","","",0L,0L)
 
     @Bindable
     var emailValid: Boolean = false

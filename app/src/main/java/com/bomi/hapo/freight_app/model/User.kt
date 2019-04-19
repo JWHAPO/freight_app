@@ -10,15 +10,16 @@ import java.util.*
  * -19. 4. 3 오후 10:06
  */
 
-data class User(var userId:Long
-                ,var userNo:Long
-                ,var email: String
-                ,var password: String
-                ,var name: String
-                ,var phone: String
-                ,var imagePath: String
-                ,var experienceValue: Long
-                ,var levelId: Long
+data class User(
+    var userId: Long
+    , var userNo: Long
+    , var email: String
+    , var password: String
+    , var name: String
+    , var phone: String
+    , var imagePath: String
+    , var experienceValue: Long
+    , var levelId: Long
 ) : Observable() {
 
     fun isEmailValid(): Boolean {

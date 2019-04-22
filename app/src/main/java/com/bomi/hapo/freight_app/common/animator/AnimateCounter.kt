@@ -36,7 +36,7 @@ class AnimateCounter(builder: Builder) {
         mValueAnmator.duration = mDuration
         mValueAnmator.interpolator = mInterpolator
         mValueAnmator.addUpdateListener { animation ->
-            mView.text = String.format("%." + mPrecision + "s", animation.animatedValue as Int)
+            mView.text = String.format("%." + mPrecision + "f", animation.animatedValue as Float)
         }
         mValueAnmator.addListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator?) {

@@ -3,7 +3,9 @@ package com.bomi.hapo.freight_app.ui
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.animation.AnimationUtils
 import com.bomi.hapo.freight_app.R
+import com.bomi.hapo.freight_app.common.animator.AnimateCounter
 import com.bomi.hapo.freight_app.databinding.MainLayoutBinding
 import com.bomi.hapo.freight_app.viewmodel.MainViewModel
 
@@ -23,6 +25,19 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel = MainViewModel(application)
         initDataBinding()
+
+        var animateCounter: AnimateCounter =
+            AnimateCounter.Builder(mainLayoutBinding.mainCurrentCarCountTv)
+                .setCount(0 , 1000)
+                .setDuration(1000)
+                .setInterpolator(AnimationUtils.loadInterpolator(applicationContext, android.R.anim.decelerate_interpolator))
+                .setAnimationCounterListener(object :AnimateCounter.AnimateCounterListener{
+                    override fun onAnimateCounterEnd() {
+                    }
+                })
+                .build()
+        animateCounter.execute()
+
     }
 
     /**

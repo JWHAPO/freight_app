@@ -61,9 +61,9 @@ class MainViewModel(private val application: Application) : BaseObservable() {
 @BindingAdapter("order_car_count")
 fun animateOrderCarCount(view: View, carCount: Int) {
     var start: Int = 0
-    var end: Int  = carCount
+    var end: Int = carCount
 
-    if(end==0){
+    if (end == 0) {
         view.main_current_car_count_tv.text = end.toString()
         return
     }
@@ -73,7 +73,7 @@ fun animateOrderCarCount(view: View, carCount: Int) {
             .setCount(start, end)
             .setDuration(1000)
             .setInterpolator(AnimationUtils.loadInterpolator(view.context, android.R.anim.decelerate_interpolator))
-            .setAnimationCounterListener(object :AnimateCounter.AnimateCounterListener{
+            .setAnimationCounterListener(object : AnimateCounter.AnimateCounterListener {
                 override fun onAnimateCounterEnd() {
                 }
             })

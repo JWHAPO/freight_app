@@ -26,18 +26,6 @@ class MainActivity : AppCompatActivity() {
         mainViewModel = MainViewModel(application)
         initDataBinding()
 
-        var animateCounter: AnimateCounter =
-            AnimateCounter.Builder(mainLayoutBinding.mainCurrentCarCountTv)
-                .setCount(0 , 1000)
-                .setDuration(1000)
-                .setInterpolator(AnimationUtils.loadInterpolator(applicationContext, android.R.anim.decelerate_interpolator))
-                .setAnimationCounterListener(object :AnimateCounter.AnimateCounterListener{
-                    override fun onAnimateCounterEnd() {
-                    }
-                })
-                .build()
-        animateCounter.execute()
-
     }
 
     /**

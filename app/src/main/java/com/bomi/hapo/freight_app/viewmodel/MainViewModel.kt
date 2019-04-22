@@ -68,6 +68,16 @@ fun animateOrderCarCount(view: View, carCount: Int) {
         return
     }
 
-
+    var animateCounter: AnimateCounter =
+        AnimateCounter.Builder(view.main_current_car_count_tv)
+            .setCount(start, end)
+            .setDuration(1000)
+            .setInterpolator(AnimationUtils.loadInterpolator(view.context, android.R.anim.decelerate_interpolator))
+            .setAnimationCounterListener(object :AnimateCounter.AnimateCounterListener{
+                override fun onAnimateCounterEnd() {
+                }
+            })
+            .build()
+    animateCounter.execute()
 
 }

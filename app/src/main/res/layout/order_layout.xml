@@ -35,6 +35,25 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
         />
+        <TextView
+                android:id="@+id/order_type_title_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/type"
+                app:layout_constraintHorizontal_weight="0.3"
+                app:layout_constraintTop_toBottomOf="@+id/order_weight_title_tv"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/order_type_et"
+        />
+        <EditText
+                android:id="@+id/order_type_et"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintHorizontal_weight="0.7"
+                app:layout_constraintTop_toBottomOf="@+id/order_weight_title_tv"
+                app:layout_constraintLeft_toRightOf="@+id/order_type_title_tv"
+                app:layout_constraintRight_toRightOf="parent"
+        />
 
     </android.support.constraint.ConstraintLayout>
 

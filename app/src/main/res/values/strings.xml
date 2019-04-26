@@ -10,4 +10,6 @@
     <string name="i_will_move_it">I\'ll move that</string>
     <string name="weight">Weight</string>
     <string name="type">Type</string>
+    <string name="departure">Departure</string>
+    <string name="arrival">Arrival</string>
 </resources>

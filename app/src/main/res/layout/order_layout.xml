@@ -2,7 +2,7 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:tools="http://schemas.android.com/tools" android:id="@+id/layout">
 
     <data>
         <variable name="orderViewModel" type="com.bomi.hapo.freight_app.viewmodel.OrderViewModel"/>
@@ -17,42 +17,46 @@
         <TextView
                 android:id="@+id/order_weight_title_tv"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/textview_height_normal_size"
                 android:text="@string/weight"
+                app:layout_constraintVertical_chainStyle="packed"
                 app:layout_constraintHorizontal_weight="0.3"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/order_type_title_tv"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/order_weight_et"
         />
         <EditText
                 android:id="@+id/order_weight_et"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/edittext_height_normal_size"
+                app:layout_constraintVertical_chainStyle="packed"
                 app:layout_constraintHorizontal_weight="0.7"
                 app:layout_constraintLeft_toRightOf="@+id/order_weight_title_tv"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/order_type_et"
         />
         <TextView
                 android:id="@+id/order_type_title_tv"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/textview_height_normal_size"
                 android:text="@string/type"
                 app:layout_constraintHorizontal_weight="0.3"
-                app:layout_constraintTop_toBottomOf="@+id/order_weight_title_tv"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/order_type_et"
+                app:layout_constraintTop_toBottomOf="@+id/order_weight_title_tv"
+                app:layout_constraintBottom_toBottomOf="parent"
         />
         <EditText
                 android:id="@+id/order_type_et"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/edittext_height_normal_size"
                 app:layout_constraintHorizontal_weight="0.7"
-                app:layout_constraintTop_toBottomOf="@+id/order_weight_title_tv"
                 app:layout_constraintLeft_toRightOf="@+id/order_type_title_tv"
                 app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/order_weight_et"
         />
 
     </android.support.constraint.ConstraintLayout>

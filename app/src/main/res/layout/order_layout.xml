@@ -88,7 +88,7 @@
                 android:layout_height="@dimen/edittext_height_normal_size"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/order_arrival_title_tv"
                 app:layout_constraintTop_toBottomOf="@+id/order_departure_title_tv"
         />
         <FrameLayout
@@ -97,8 +97,49 @@
                 android:layout_height="@dimen/edittext_height_normal_size"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/order_arrival_empty_fl"
                 app:layout_constraintTop_toBottomOf="@+id/order_departure_empty_fl"
+        />
+        <TextView
+                android:id="@+id/order_arrival_title_tv"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/textview_height_normal_size"
+                android:text="@string/arrival"
+                android:gravity="center"
+                app:layout_constraintHorizontal_weight="0.3"
+                app:layout_constraintTop_toBottomOf="@+id/order_departure_et"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/order_arrival_et"
+                app:layout_constraintRight_toLeftOf="@+id/order_arrival_empty_fl"
+
+        />
+        <FrameLayout
+                android:id="@+id/order_arrival_empty_fl"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/textview_height_normal_size"
+                app:layout_constraintHorizontal_weight="0.7"
+                app:layout_constraintLeft_toRightOf="@+id/order_arrival_title_tv"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/order_arrival_empty_fl2"
+                app:layout_constraintTop_toBottomOf="@+id/order_departure_empty_fl2"
+        />
+        <EditText
+                android:id="@+id/order_arrival_et"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height_normal_size"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/order_arrival_title_tv"
+        />
+        <FrameLayout
+                android:id="@+id/order_arrival_empty_fl2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height_normal_size"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/order_arrival_empty_fl"
         />
 
     </android.support.constraint.ConstraintLayout>

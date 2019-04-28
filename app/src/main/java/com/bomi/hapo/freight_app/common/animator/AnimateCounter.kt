@@ -19,7 +19,7 @@ class AnimateCounter(builder: Builder) {
     var mPrecision: Int
     var mInterpolator: Interpolator
     lateinit var mValueAnmator: ValueAnimator
-    lateinit var mListener: AnimateCounterListener
+    var mListener: AnimateCounterListener
 
     init {
         mView = builder.mView

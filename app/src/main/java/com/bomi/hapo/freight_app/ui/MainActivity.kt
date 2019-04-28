@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel = MainViewModel(application)
         initDataBinding()
-
     }
 
     /**

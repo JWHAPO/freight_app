@@ -1,5 +1,6 @@
 package com.bomi.hapo.freight_app.common.network
 
+import com.bomi.hapo.freight_app.model.Order
 import com.bomi.hapo.freight_app.model.User
 import com.google.gson.JsonElement
 import io.reactivex.Observable
@@ -36,6 +37,8 @@ interface ApiService {
     //get Order Counting
     @GET("api/orders/count/status/{status}")
     fun getOrderCountByStatus(@Path(value = "status", encoded = true) status: String ) : Observable<Int>
-
+    //get Order
+    @GET("/api/orders/{id}")
+    fun getOrder(@Path(value="id",encoded = true)id:Long) : Observable<Order>
 
 }

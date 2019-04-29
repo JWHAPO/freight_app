@@ -37,8 +37,12 @@ interface ApiService {
     //get Order Counting
     @GET("api/orders/count/status/{status}")
     fun getOrderCountByStatus(@Path(value = "status", encoded = true) status: String ) : Observable<Int>
+
     //get Order
     @GET("/api/orders/{id}")
     fun getOrder(@Path(value="id",encoded = true)id:Long) : Observable<Order>
 
+    //post Order
+    @POST("/api/orders")
+    fun newOrder(@Body order:Order) : Observable<Order>
 }

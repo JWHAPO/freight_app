@@ -28,12 +28,15 @@ class OrderViewModel(private val application: Application) : BaseObservable() {
     var order: Order =
         Order(0L, "", 0L, "", "", 0L, LocalDate.now(), LocalTime.now(), 0L, "N", "", "", "", orderResponses)
 
+    init{
+        getOrder(order)
+    }
 
     fun onRequestBtnClick() {
 
     }
 
-    private fun getOder(order: Order) {
+    private fun getOrder(order: Order) {
         apiService = ApiClient.getClient(application).create(ApiService::class.java)
 
         mCompositeDisposable.add(

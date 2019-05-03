@@ -56,6 +56,14 @@ class MainViewModel(private val application: Application) : BaseObservable() {
         Toast.makeText(application.applicationContext, "$error !", Toast.LENGTH_LONG).show()
     }
 
+    fun onMoveItBtnClick(){
+
+    }
+
+    fun onWillMoveThatBtnClick(){
+
+    }
+
 }
 
 @BindingAdapter("order_car_count")

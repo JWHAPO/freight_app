@@ -18,22 +18,29 @@ import java.time.LocalTime
  * Created by JWHAPO
  * -19. 4. 20 오전 12:21
  */
-class OrderViewModel(private val application: Application) : BaseObservable() {
+class OrderViewModel(private val application: Application) : BaseViewModel() {
     private lateinit var apiService: ApiService
     private var mCompositeDisposable: CompositeDisposable = CompositeDisposable()
 
-    var orderResponse: OrderResponse = OrderResponse(0L, 0L, LocalDate.now(), LocalTime.now(), 0L, 0L, "", "", 0L, "N")
-    var orderResponses: List<OrderResponse> = listOf(orderResponse)
+    private var orderResponse: OrderResponse = OrderResponse(0L, 0L, LocalDate.now(), LocalTime.now(), 0L, 0L, "", "", 0L, "N")
+    private var orderResponses: List<OrderResponse> = listOf(orderResponse)
     @Bindable
     var order: Order =
         Order(0L, "", 0L, "", "", 0L, LocalDate.now(), LocalTime.now(), 0L, "N", "", "", "", orderResponses)
 
     init{
-        getOrder(order)
+//        getOrder(order)
     }
 
     fun onRequestBtnClick() {
+        apiService = ApiClient.getClient(application).create(ApiService::class.java)
 
+        mCompositeDisposable.add(
+            apiService.newOrder(order)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::successGetOrder, this::failGetOrder)
+        )
     }
 
     private fun getOrder(order: Order) {
@@ -45,6 +52,14 @@ class OrderViewModel(private val application: Application) : BaseObservable() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::successGetOrder, this::failGetOrder)
         )
+    }
+
+    private fun successNewOrder(order: Order){
+
+    }
+
+    private fun failNewOrder(error: Throwable){
+        println("error: $error")
     }
 
     private fun successGetOrder(order: Order) {

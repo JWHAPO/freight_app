@@ -23,6 +23,8 @@ class OrderActivity:AppCompatActivity(){
 
         orderViewModel = OrderViewModel(application)
         initDataBinding()
+
+        orderViewModel.onCreate()
     }
 
     /**
@@ -33,5 +35,22 @@ class OrderActivity:AppCompatActivity(){
         orderLayoutBindinding.orderViewModel = orderViewModel
         orderLayoutBindinding.executePendingBindings()
     }
+
+    override fun onResume() {
+        super.onResume()
+        orderViewModel.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        orderViewModel.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        orderViewModel.onDestroy()
+    }
+
+
 
 }

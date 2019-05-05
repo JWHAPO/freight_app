@@ -3,7 +3,6 @@ package com.bomi.hapo.freight_app.viewmodel
 import android.app.Application
 import android.content.Context
 import android.content.Intent
-import android.databinding.BaseObservable
 import android.databinding.Bindable
 import android.databinding.BindingAdapter
 import android.view.View
@@ -15,6 +14,7 @@ import com.bomi.hapo.freight_app.common.network.ApiClient
 import com.bomi.hapo.freight_app.common.network.ApiService
 import com.bomi.hapo.freight_app.model.User
 import com.bomi.hapo.freight_app.ui.MainActivity
+import com.bomi.hapo.freight_app.viewmodel.common.BaseViewModel
 import com.google.gson.JsonElement
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -28,7 +28,7 @@ import kotlinx.android.synthetic.main.login_layout.view.*
  * -19. 4. 3 오후 10:12
  */
 
-class UserViewModel(private val application: Application) : BaseObservable() {
+class UserViewModel(private val application: Application) : BaseViewModel() {
 
     private lateinit var apiService: ApiService
     private var mCompositeDisposable: CompositeDisposable = CompositeDisposable()

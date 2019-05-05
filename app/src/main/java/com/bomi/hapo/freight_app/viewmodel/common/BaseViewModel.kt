@@ -1,4 +1,4 @@
-package com.bomi.hapo.freight_app.viewmodel
+package com.bomi.hapo.freight_app.viewmodel.common
 
 import android.databinding.BaseObservable
 

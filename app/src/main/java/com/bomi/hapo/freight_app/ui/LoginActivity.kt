@@ -34,4 +34,6 @@ class LoginActivity : AppCompatActivity() {
         loginLayoutBinding.userViewModel = userViewModel
         loginLayoutBinding.executePendingBindings()
     }
+
+
 }

@@ -24,6 +24,8 @@ class LoginActivity : AppCompatActivity() {
 
         userViewModel = UserViewModel(application)
         initDataBinding()
+
+        userViewModel.onCreate()
     }
 
     /**
@@ -35,5 +37,18 @@ class LoginActivity : AppCompatActivity() {
         loginLayoutBinding.executePendingBindings()
     }
 
+    override fun onResume() {
+        super.onResume()
+        userViewModel.onResume()
+    }
 
+    override fun onPause() {
+        super.onPause()
+        userViewModel.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        userViewModel.onDestroy()
+    }
 }

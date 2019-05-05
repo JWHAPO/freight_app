@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity(),MainActivityNavigator {
 
         mainViewModel = MainViewModel(this)
         initDataBinding()
+
+        mainViewModel.onCreate()
     }
 
     /**
@@ -43,5 +45,18 @@ class MainActivity : AppCompatActivity(),MainActivityNavigator {
         var intent: Intent = Intent(this, OrderActivity::class.java)
         startActivity(intent)
     }
+    override fun onResume() {
+        super.onResume()
+        mainViewModel.onResume()
+    }
 
+    override fun onPause() {
+        super.onPause()
+        mainViewModel.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mainViewModel.onDestroy()
+    }
 }

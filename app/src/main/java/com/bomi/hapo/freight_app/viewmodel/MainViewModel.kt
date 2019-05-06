@@ -65,7 +65,7 @@ class MainViewModel(private val context: Context) : BaseViewModel() {
 
     }
 
-    fun callOrderActivity(){
+    private fun callOrderActivity(){
         navigator.callOrderActivity()
     }
 

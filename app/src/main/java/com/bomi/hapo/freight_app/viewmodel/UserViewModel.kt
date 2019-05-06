@@ -1,8 +1,6 @@
 package com.bomi.hapo.freight_app.viewmodel
 
-import android.app.Application
 import android.content.Context
-import android.content.Intent
 import android.databinding.Bindable
 import android.databinding.BindingAdapter
 import android.view.View
@@ -13,7 +11,7 @@ import com.bomi.hapo.freight_app.common.App
 import com.bomi.hapo.freight_app.common.network.ApiClient
 import com.bomi.hapo.freight_app.common.network.ApiService
 import com.bomi.hapo.freight_app.model.User
-import com.bomi.hapo.freight_app.ui.MainActivity
+import com.bomi.hapo.freight_app.ui.navigator.LoginActivityNavigator
 import com.bomi.hapo.freight_app.viewmodel.common.BaseViewModel
 import com.google.gson.JsonElement
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -28,10 +26,11 @@ import kotlinx.android.synthetic.main.login_layout.view.*
  * -19. 4. 3 오후 10:12
  */
 
-class UserViewModel(private val application: Application) : BaseViewModel() {
+class UserViewModel(private val context: Context) : BaseViewModel() {
 
     private lateinit var apiService: ApiService
     private var mCompositeDisposable: CompositeDisposable = CompositeDisposable()
+    private var navigator : LoginActivityNavigator = context as LoginActivityNavigator
 
     @Bindable
     var user: User = User(0L,0L,"","","","","",0L,0L)
@@ -61,18 +60,18 @@ class UserViewModel(private val application: Application) : BaseViewModel() {
 
     fun onSignInBtnClick() {
         if (emailValid && passwordValid) {
-            Toast.makeText(application, "SUCCESS VALID", Toast.LENGTH_LONG).show()
+            Toast.makeText(context.applicationContext, "SUCCESS VALID", Toast.LENGTH_LONG).show()
             App.prefs.loginId = user.email
             loginUser(user)
 
         } else {
-            Toast.makeText(application, application.resources.getString(R.string.check_account), Toast.LENGTH_LONG)
+            Toast.makeText(context.applicationContext, context.applicationContext.resources.getString(R.string.check_account), Toast.LENGTH_LONG)
                 .show()
         }
     }
 
     private fun loginUser(user: User) {
-        apiService = ApiClient.getClient(application).create(ApiService::class.java)
+        apiService = ApiClient.getClient(context).create(ApiService::class.java)
 
         val accountInfo: HashMap<String, String> = hashMapOf("email" to user.email, "password" to user.password)
 
@@ -86,18 +85,16 @@ class UserViewModel(private val application: Application) : BaseViewModel() {
 
     private fun failLogin(error: Throwable) {
         println("error: $error")
-        Toast.makeText(application.applicationContext, "$error !", Toast.LENGTH_LONG).show()
+        Toast.makeText(context.applicationContext, "$error !", Toast.LENGTH_LONG).show()
     }
 
     private fun moveMain(token: JsonElement) {
         saveToken(token.asJsonObject.get("token").asString, token.asJsonObject.get("refreshToken").asString)
-        goMainActivity()
+        callMainActivity()
     }
 
-    private fun goMainActivity(){
-        val intent = Intent(application as Context,MainActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        application.startActivity(intent)
+    private fun callMainActivity(){
+        navigator.callMainActivity()
     }
 
     private fun saveToken(token:String, refreshToken:String){

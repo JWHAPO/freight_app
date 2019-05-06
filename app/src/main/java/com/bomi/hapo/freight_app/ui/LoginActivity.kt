@@ -1,10 +1,12 @@
 package com.bomi.hapo.freight_app.ui
 
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.bomi.hapo.freight_app.R
 import com.bomi.hapo.freight_app.databinding.LoginLayoutBinding
+import com.bomi.hapo.freight_app.ui.navigator.LoginActivityNavigator
 import com.bomi.hapo.freight_app.viewmodel.UserViewModel
 
 /**
@@ -13,7 +15,7 @@ import com.bomi.hapo.freight_app.viewmodel.UserViewModel
  * -19. 4. 2 오후 10:13
  */
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), LoginActivityNavigator {
 
     private lateinit var loginLayoutBinding: LoginLayoutBinding
     private lateinit var userViewModel: UserViewModel
@@ -35,6 +37,11 @@ class LoginActivity : AppCompatActivity() {
         loginLayoutBinding = DataBindingUtil.setContentView(this, R.layout.login_layout)
         loginLayoutBinding.userViewModel = userViewModel
         loginLayoutBinding.executePendingBindings()
+    }
+
+    override fun callMainActivity() {
+        var intent: Intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onResume() {

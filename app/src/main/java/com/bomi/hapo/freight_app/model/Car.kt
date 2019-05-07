@@ -21,4 +21,5 @@ data class Car(
     , var loadableHeightUom: String
     , var loadableWeight: Long
     , var loadableWeightUom: String
+    , var carImgUrl: String
 ) : Observable()

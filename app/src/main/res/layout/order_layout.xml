@@ -15,61 +15,40 @@
             android:padding="@dimen/layout_padding_size">
 
         <TextView
-                android:id="@+id/order_weight_title_tv"
+                android:id="@+id/order_car_title_tv"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/textview_height_normal_size"
-                android:text="@string/weight"
+                android:layout_height="@dimen/textView_height_normal_size"
+                android:text="@string/car"
                 android:gravity="center"
                 app:layout_constraintVertical_chainStyle="packed"
                 app:layout_constraintHorizontal_weight="0.3"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/order_type_title_tv"
+                app:layout_constraintBottom_toTopOf="@+id/order_departure_title_tv"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/order_weight_et"
-        />
-        <EditText
-                android:id="@+id/order_weight_et"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/edittext_height_normal_size"
-                android:text="@{orderViewModel.order.carId}"
-                app:layout_constraintVertical_chainStyle="packed"
-                app:layout_constraintHorizontal_weight="0.7"
-                app:layout_constraintLeft_toRightOf="@+id/order_weight_title_tv"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/order_type_et"
+                app:layout_constraintRight_toLeftOf="@+id/order_car_tv"
         />
         <TextView
-                android:id="@+id/order_type_title_tv"
+                android:id="@+id/order_car_tv"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/textview_height_normal_size"
-                android:text="@string/type"
-                android:gravity="center"
-                app:layout_constraintHorizontal_weight="0.3"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/order_type_et"
-                app:layout_constraintTop_toBottomOf="@+id/order_weight_title_tv"
-                app:layout_constraintBottom_toTopOf="@+id/order_departure_title_tv"
-        />
-        <EditText
-                android:id="@+id/order_type_et"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/edittext_height_normal_size"
+                android:layout_height="@dimen/editText_height_normal_size"
                 android:text="@{orderViewModel.order.carId}"
+                android:clickable="true"
+                android:onClick="@{()-> orderViewModel.onCarTvClick()}"
+                app:layout_constraintVertical_chainStyle="packed"
                 app:layout_constraintHorizontal_weight="0.7"
-                app:layout_constraintLeft_toRightOf="@+id/order_type_title_tv"
+                app:layout_constraintLeft_toRightOf="@+id/order_car_title_tv"
                 app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/order_departure_empty_fl"
-                app:layout_constraintTop_toBottomOf="@+id/order_weight_et"
         />
         <TextView
                 android:id="@+id/order_departure_title_tv"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/textview_height_normal_size"
+                android:layout_height="@dimen/textView_height_normal_size"
                 android:text="@string/departure"
                 android:gravity="center"
                 app:layout_constraintHorizontal_weight="0.3"
-                app:layout_constraintTop_toBottomOf="@+id/order_type_title_tv"
+                app:layout_constraintTop_toBottomOf="@+id/order_car_title_tv"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/order_departure_et"
                 app:layout_constraintRight_toLeftOf="@+id/order_departure_empty_fl"
@@ -77,17 +56,17 @@
         <FrameLayout
                 android:id="@+id/order_departure_empty_fl"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/textview_height_normal_size"
+                android:layout_height="@dimen/textView_height_normal_size"
                 app:layout_constraintHorizontal_weight="0.7"
                 app:layout_constraintLeft_toRightOf="@+id/order_departure_title_tv"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/order_departure_empty_fl2"
-                app:layout_constraintTop_toBottomOf="@+id/order_type_et"
+                app:layout_constraintTop_toBottomOf="@+id/order_car_tv"
         />
         <EditText
                 android:id="@+id/order_departure_et"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/edittext_height_normal_size"
+                android:layout_height="@dimen/editText_height_normal_size"
                 android:text="@{orderViewModel.order.departureAddress}"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -97,7 +76,7 @@
         <FrameLayout
                 android:id="@+id/order_departure_empty_fl2"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/edittext_height_normal_size"
+                android:layout_height="@dimen/editText_height_normal_size"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/order_arrival_empty_fl"
@@ -106,7 +85,7 @@
         <TextView
                 android:id="@+id/order_arrival_title_tv"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/textview_height_normal_size"
+                android:layout_height="@dimen/textView_height_normal_size"
                 android:text="@string/arrival"
                 android:gravity="center"
                 app:layout_constraintHorizontal_weight="0.3"
@@ -119,7 +98,7 @@
         <FrameLayout
                 android:id="@+id/order_arrival_empty_fl"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/textview_height_normal_size"
+                android:layout_height="@dimen/textView_height_normal_size"
                 app:layout_constraintHorizontal_weight="0.7"
                 app:layout_constraintLeft_toRightOf="@+id/order_arrival_title_tv"
                 app:layout_constraintRight_toRightOf="parent"
@@ -129,7 +108,7 @@
         <EditText
                 android:id="@+id/order_arrival_et"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/edittext_height_normal_size"
+                android:layout_height="@dimen/editText_height_normal_size"
                 android:text="@{orderViewModel.order.arrivalAddress}"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -139,7 +118,7 @@
         <FrameLayout
                 android:id="@+id/order_arrival_empty_fl2"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/edittext_height_normal_size"
+                android:layout_height="@dimen/editText_height_normal_size"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -148,7 +127,7 @@
         <TextView
                 android:id="@+id/order_hope_time_title_tv"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/textview_height_normal_size"
+                android:layout_height="@dimen/textView_height_normal_size"
                 android:text="@string/hope_time"
                 android:gravity="center"
                 app:layout_constraintHorizontal_weight="0.3"
@@ -160,7 +139,7 @@
         <EditText
                 android:id="@+id/order_hope_time_date_et"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/edittext_height_normal_size"
+                android:layout_height="@dimen/editText_height_normal_size"
                 app:layout_constraintHorizontal_weight="0.4"
                 android:gravity="center"
                 android:text="@{orderViewModel.order.hopeDate}"
@@ -172,7 +151,7 @@
         <EditText
                 android:id="@+id/order_hope_time_time_et"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/edittext_height_normal_size"
+                android:layout_height="@dimen/editText_height_normal_size"
                 app:layout_constraintHorizontal_weight="0.3"
                 android:gravity="center"
                 android:text="@{orderViewModel.order.hopeTime}"
@@ -183,7 +162,7 @@
         <TextView
                 android:id="@+id/order_hope_price_title_tv"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/textview_height_normal_size"
+                android:layout_height="@dimen/textView_height_normal_size"
                 android:text="@string/hope_price"
                 android:gravity="center"
                 app:layout_constraintHorizontal_weight="0.3"
@@ -195,7 +174,7 @@
         <EditText
                 android:id="@+id/order_hope_price_et"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/edittext_height_normal_size"
+                android:layout_height="@dimen/editText_height_normal_size"
                 app:layout_constraintHorizontal_weight="0.4"
                 android:gravity="center"
                 android:text="@{orderViewModel.order.hopePrice}"
@@ -207,7 +186,7 @@
         <TextView
                 android:id="@+id/order_hope_price_avg_tv"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/textview_height_normal_size"
+                android:layout_height="@dimen/textView_height_normal_size"
                 android:gravity="center"
                 app:layout_constraintHorizontal_weight="0.3"
                 app:layout_constraintTop_toBottomOf="@+id/order_hope_time_time_et"
@@ -218,7 +197,7 @@
         <TextView
                 android:id="@+id/order_addition_title_tv"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/textview_height_normal_size"
+                android:layout_height="@dimen/textView_height_normal_size"
                 android:text="@string/addition"
                 android:gravity="center"
                 app:layout_constraintHorizontal_weight="0.3"
@@ -230,7 +209,7 @@
         <FrameLayout
                 android:id="@+id/order_addition_empty_fl"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/textview_height_normal_size"
+                android:layout_height="@dimen/textView_height_normal_size"
                 app:layout_constraintHorizontal_weight="0.7"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/order_addition_title_tv"

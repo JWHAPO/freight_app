@@ -32,6 +32,10 @@ class OrderViewModel(private val application: Application) : BaseViewModel() {
 //        getOrder(order)
     }
 
+    fun onCarTvClick(){
+
+    }
+
     fun onRequestBtnClick() {
         apiService = ApiClient.getClient(application).create(ApiService::class.java)
 

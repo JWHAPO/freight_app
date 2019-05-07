@@ -8,7 +8,7 @@
     <string name="current_car_count">Current Cars</string>
     <string name="move_it">Please Move it</string>
     <string name="i_will_move_it">I\'ll move that</string>
-    <string name="weight">Weight</string>
+    <string name="car">Car</string>
     <string name="type">Type</string>
     <string name="departure">Departure</string>
     <string name="arrival">Arrival</string>

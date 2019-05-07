@@ -5,12 +5,14 @@ import android.content.Context
 import android.databinding.Bindable
 import android.databinding.BindingAdapter
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import com.bomi.hapo.freight_app.common.network.ApiClient
 import com.bomi.hapo.freight_app.common.network.ApiService
 import com.bomi.hapo.freight_app.model.Car
 import com.bomi.hapo.freight_app.ui.adapter.CarGridAdapter
 import com.bomi.hapo.freight_app.viewmodel.common.BaseViewModel
+import com.bumptech.glide.Glide
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers

@@ -1,8 +1,6 @@
 package com.bomi.hapo.freight_app.model
 
-import android.databinding.BaseObservable
-import android.databinding.Bindable
-import com.bomi.hapo.freight_app.BR
+import java.util.*
 
 /**
  *
@@ -22,12 +20,4 @@ data class Car(
     , var loadableWeight: Long
     , var loadableWeightUom: String
     , var carImgUrl: String
-) : BaseObservable(){
-
-    var _carImgUrl : String
-    @Bindable get() = carImgUrl
-    set(value) {
-        carImgUrl = value
-        notifyPropertyChanged(BR._carImgUrl)
-    }
-}
+) : Observable()

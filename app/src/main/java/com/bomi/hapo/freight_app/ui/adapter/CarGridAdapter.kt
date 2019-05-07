@@ -1,12 +1,13 @@
 package com.bomi.hapo.freight_app.ui.adapter
 
 import android.app.Activity
+import android.databinding.DataBindingUtil
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ImageView
-import android.widget.TextView
 import com.bomi.hapo.freight_app.R
+import com.bomi.hapo.freight_app.databinding.CarGridRowBinding
 import com.bomi.hapo.freight_app.model.Car
 
 /**
@@ -17,14 +18,18 @@ import com.bomi.hapo.freight_app.model.Car
 data class CarGridAdapter (var cars:List<Car>, var activity:Activity) : BaseAdapter(){
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
-        val view : View = View.inflate(activity, R.layout.car_grid_row,null)
-        val car_grid_row_car_iv = view.findViewById<ImageView>(R.id.car_grid_row_car_iv)
-        val car_grid_row_name_tv = view.findViewById<TextView>(R.id.car_grid_row_name_tv)
+        var binding : CarGridRowBinding
 
+        if(convertView == null){
+            binding = DataBindingUtil.inflate(LayoutInflater.from(activity),R.layout.car_grid_row,parent,false)
+            binding.root.tag = binding
+        }else{
+            binding = convertView.tag as CarGridRowBinding
+        }
 
-        car_grid_row_name_tv.text = cars[position].description
+        binding.carGridRowNameTv.text = cars[position].description
 
-        return view
+        return binding.root
     }
 
     override fun getItem(position: Int): Any {

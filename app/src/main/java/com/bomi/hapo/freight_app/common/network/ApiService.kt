@@ -1,5 +1,6 @@
 package com.bomi.hapo.freight_app.common.network
 
+import com.bomi.hapo.freight_app.model.Car
 import com.bomi.hapo.freight_app.model.Order
 import com.bomi.hapo.freight_app.model.User
 import com.google.gson.JsonElement
@@ -45,4 +46,8 @@ interface ApiService {
     //post Order
     @POST("/api/orders")
     fun newOrder(@Body order:Order) : Observable<Order>
+
+    //get Cars
+    @GET("/api/cars")
+    fun getCars() : Observable<List<Car>>
 }

@@ -19,7 +19,7 @@
                 android:id="@+id/car_grid_row_car_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"
+                app:car_grid_row_iv_image_url="@{car._carImgUrl}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"

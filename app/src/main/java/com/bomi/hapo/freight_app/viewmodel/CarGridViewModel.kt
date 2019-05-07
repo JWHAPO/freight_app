@@ -1,5 +1,6 @@
 package com.bomi.hapo.freight_app.viewmodel
 
+import android.app.Activity
 import android.content.Context
 import android.databinding.Bindable
 import android.databinding.BindingAdapter
@@ -8,10 +9,12 @@ import android.widget.Toast
 import com.bomi.hapo.freight_app.common.network.ApiClient
 import com.bomi.hapo.freight_app.common.network.ApiService
 import com.bomi.hapo.freight_app.model.Car
+import com.bomi.hapo.freight_app.ui.adapter.CarGridAdapter
 import com.bomi.hapo.freight_app.viewmodel.common.BaseViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.car_grid_layout.view.*
 
 /**
  *
@@ -53,6 +56,15 @@ class CarGridViewModel(private val context: Context) : BaseViewModel() {
 }
 
 @BindingAdapter("car_grid_items")
-fun setCarsToGridView(view: View, cars: List<Car>){
+fun setCarsToGridView(view: View, cars: List<Car>) {
+    var adapter: CarGridAdapter
 
+    if(view.car_grid_gv.adapter == null){
+        adapter = CarGridAdapter(cars, view.context as Activity)
+        view.car_grid_gv.adapter = adapter
+    }else{
+        adapter = view.car_grid_gv.adapter as CarGridAdapter
+    }
+
+    adapter.notifyDataSetChanged()
 }

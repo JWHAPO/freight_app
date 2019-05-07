@@ -27,8 +27,6 @@ data class CarGridAdapter (var cars:List<Car>, var activity:Activity) : BaseAdap
             binding = convertView.tag as CarGridRowBinding
         }
 
-        binding.carGridRowNameTv.text = cars[position].description
-
         return binding.root
     }
 

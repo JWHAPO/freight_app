@@ -2,6 +2,8 @@ package com.bomi.hapo.freight_app.viewmodel
 
 import android.content.Context
 import android.databinding.Bindable
+import android.databinding.BindingAdapter
+import android.view.View
 import android.widget.Toast
 import com.bomi.hapo.freight_app.common.network.ApiClient
 import com.bomi.hapo.freight_app.common.network.ApiService
@@ -22,14 +24,14 @@ class CarGridViewModel(private val context: Context) : BaseViewModel() {
     private var mCompositeDisposable: CompositeDisposable = CompositeDisposable()
 
     @Bindable
-    var cars : List<Car> = listOf(Car(0L,0L,"",0L,"",0L,"",0L,"",0L,"",""))
+    var cars: List<Car> = listOf(Car(0L, 0L, "", 0L, "", 0L, "", 0L, "", 0L, "", ""))
 
     init {
         getCars()
     }
 
 
-    private fun getCars(){
+    private fun getCars() {
         apiService = ApiClient.getClient(context).create(ApiService::class.java)
 
         mCompositeDisposable.add(
@@ -40,7 +42,7 @@ class CarGridViewModel(private val context: Context) : BaseViewModel() {
         )
     }
 
-    private fun setCarGridView(cars:List<Car>){
+    private fun setCarGridView(cars: List<Car>) {
         this.cars = cars
     }
 
@@ -48,4 +50,9 @@ class CarGridViewModel(private val context: Context) : BaseViewModel() {
         println("error: $error")
         Toast.makeText(context.applicationContext, "$error !", Toast.LENGTH_LONG).show()
     }
+}
+
+@BindingAdapter("car_grid_items")
+fun setCarsToGridView(view: View, cars: List<Car>){
+
 }

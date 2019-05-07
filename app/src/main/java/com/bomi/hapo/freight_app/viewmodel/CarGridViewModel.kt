@@ -1,6 +1,7 @@
 package com.bomi.hapo.freight_app.viewmodel
 
 import android.content.Context
+import android.databinding.Bindable
 import android.widget.Toast
 import com.bomi.hapo.freight_app.common.network.ApiClient
 import com.bomi.hapo.freight_app.common.network.ApiService
@@ -20,6 +21,13 @@ class CarGridViewModel(private val context: Context) : BaseViewModel() {
     private lateinit var apiService: ApiService
     private var mCompositeDisposable: CompositeDisposable = CompositeDisposable()
 
+    @Bindable
+    var cars : List<Car> = listOf(Car(0L,0L,"",0L,"",0L,"",0L,"",0L,"",""))
+
+    init {
+        getCars()
+    }
+
 
     private fun getCars(){
         apiService = ApiClient.getClient(context).create(ApiService::class.java)
@@ -33,7 +41,7 @@ class CarGridViewModel(private val context: Context) : BaseViewModel() {
     }
 
     private fun setCarGridView(cars:List<Car>){
-
+        this.cars = cars
     }
 
     private fun failGetCars(error: Throwable) {

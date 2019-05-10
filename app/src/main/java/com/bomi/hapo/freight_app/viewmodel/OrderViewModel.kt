@@ -4,6 +4,7 @@ import android.app.Application
 import android.databinding.Bindable
 import com.bomi.hapo.freight_app.common.network.ApiClient
 import com.bomi.hapo.freight_app.common.network.ApiService
+import com.bomi.hapo.freight_app.model.Car
 import com.bomi.hapo.freight_app.model.Order
 import com.bomi.hapo.freight_app.model.OrderResponse
 import com.bomi.hapo.freight_app.viewmodel.common.BaseViewModel
@@ -24,9 +25,11 @@ class OrderViewModel(private val application: Application) : BaseViewModel() {
 
     private var orderResponse: OrderResponse = OrderResponse(0L, 0L, LocalDate.now(), LocalTime.now(), 0L, 0L, "", "", 0L, "N")
     private var orderResponses: List<OrderResponse> = listOf(orderResponse)
+    private var car: Car = Car(0L,0L,"",0L,"",0L,"",0L,"",0L,"","")
+
     @Bindable
     var order: Order =
-        Order(0L, "", 0L, "", "", 0L, LocalDate.now(), LocalTime.now(), 0L, "N", "", "", "", orderResponses)
+        Order(0L, "", car, "", "", 0L, LocalDate.now(), LocalTime.now(), 0L, "N", "", "", "", orderResponses)
 
     init{
 //        getOrder(order)

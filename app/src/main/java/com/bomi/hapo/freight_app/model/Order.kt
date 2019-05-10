@@ -12,7 +12,7 @@ import java.util.*
 data class Order(
     var orderId: Long
     , var description: String
-    , var carId: Long
+    , var car: Car
     , var departureAddress: String
     , var arrivalAddress: String
     , var distance: Long

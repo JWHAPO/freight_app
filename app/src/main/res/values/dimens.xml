@@ -14,5 +14,7 @@
     <dimen name="row_normal_height">60dp</dimen>
 
     <!--TEXT SIZE-->
+    <dimen name="textView_normal_size">20sp</dimen>
+    <dimen name="textView_small_size">14sp</dimen>
     <dimen name="current_car_count_text_size">30sp</dimen>
 </resources>
